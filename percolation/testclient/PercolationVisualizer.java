@@ -19,10 +19,9 @@
 
 package percolation.testclient;
 
-import edu.princeton.cs.introcs.In;
 import edu.princeton.cs.introcs.StdDraw;
+import edu.princeton.cs.introcs.StdRandom;
 import percolation.Percolation;
-
 
 import java.awt.*;
 
@@ -67,9 +66,12 @@ public class PercolationVisualizer {
     }
 
     public static void main(String[] args) {
-        args = new String[] {"/percolation/testclient/input50.txt"};
-        In in = new In(args[0]);      // input file
-        int N = in.readInt();         // N-by-N testclient system
+//        args = new String[] {"/percolation/testclient/input50.txt"};
+//        In in = new In(args[0]);      // input file
+//        int N = in.readInt();         // N-by-N testclient system
+
+
+        int N = 40;
 
         // turn on animation mode
         StdDraw.show(0);
@@ -78,12 +80,20 @@ public class PercolationVisualizer {
         Percolation perc = new Percolation(N);
         draw(perc, N);
         StdDraw.show(DELAY);
-        while (!in.isEmpty()) {
-            int i = in.readInt();
-            int j = in.readInt();
-            perc.open(i, j);
+//        while (!in.isEmpty()) {
+//            int i = in.readInt();
+//            int j = in.readInt();
+//            perc.open(i, j);
+//            draw(perc, N);
+//            StdDraw.show(DELAY);
+//        }
+
+        while (!perc.percolates()) {
+            perc.open(StdRandom.uniform(N) + 1, StdRandom.uniform(N) + 1);
             draw(perc, N);
             StdDraw.show(DELAY);
         }
+
+
     }
 }

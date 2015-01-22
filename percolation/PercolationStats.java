@@ -20,7 +20,6 @@ public class PercolationStats {
         this.T = T;
         openSites = new int[T];
 
-//        System.out.println("here");
         for ( ; T > 0; T--) {
             Percolation perc = new Percolation(N);
             while (!perc.percolates()) {
@@ -31,10 +30,8 @@ public class PercolationStats {
                     perc.open(i, j);
                     openSites[T - 1]++;
                 }
-
             }
         }
-
     } // perform T independent experiments on an N-by-N grid
 
     public double mean() {
@@ -42,11 +39,14 @@ public class PercolationStats {
         for (int i = 0; i < T; i++) {
             sum += ((double) openSites[i]) / N / N;
         }
-
         return sum / T;
     } // sample mean of percolation threshold
 
     public double stddev()  {
+        if (T == 1) {
+            return Double.NaN;
+        }
+
         double sum = 0;
         for (int i = 0; i < T; i++) {
             sum += Math.pow(((((double) openSites[i]) / N / N) - mean()),2);
