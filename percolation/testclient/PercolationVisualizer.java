@@ -29,7 +29,7 @@ import java.awt.*;
 public class PercolationVisualizer {
 
     // delay in miliseconds (controls animation speed)
-    private static final int DELAY = 100;
+    private static final int DELAY = 0;
 
     // draw N-by-N testclient system
     public static void draw(Percolation perc, int N) {
@@ -67,6 +67,7 @@ public class PercolationVisualizer {
     }
 
     public static void main(String[] args) {
+        args = new String[] {"/percolation/testclient/input50.txt"};
         In in = new In(args[0]);      // input file
         int N = in.readInt();         // N-by-N testclient system
 

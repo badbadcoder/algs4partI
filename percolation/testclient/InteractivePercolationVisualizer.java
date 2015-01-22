@@ -21,7 +21,7 @@ public class InteractivePercolationVisualizer {
 
     public static void main(String[] args) {
         // N-by-N testclient system (read from command-line, default = 10)
-        int N = 10;          
+        int N = 50;
         if (args.length == 1) N = Integer.parseInt(args[0]);
 
         // repeatedly open site specified my mouse click and draw resulting system
